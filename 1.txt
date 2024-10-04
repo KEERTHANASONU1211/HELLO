@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enter Job Data</title>
+  <script>
+    function validateForm() {
+      if (document.getElementById("title").value == "" ||
+          document.getElementById("type").value == "" ||
+          document.getElementById("department").value == "" ||
+          document.getElementById("country").value == "" ||
+          document.getElementById("opening_date").value == "") {
+        alert("Please fill in all required fields.");
+        return false;
+      }
+      
+      var currentDate = new Date();
+      var openingDate = new Date(document.getElementById("opening_date").value);
+      if (openingDate > currentDate) {
+        alert("Opening date cannot be greater than current date.");
+        return false;
+      }
+      
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h1>Enter Job Data</h1>
+  <form onsubmit="return validateForm()">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+    
+    <label for="department">Department:</label>
+    <select id="department" name="department" required>
+      <!-- options will be populated dynamically -->
+    </select><br><br>
+    
+    <label for="country">Country:</label>
+    <select id="country" name="country" required>
+      <!-- options will be populated dynamically -->
+    </select><br><br>
+    
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"></textarea><br><br>
+    
+    <label for="opening_date">Opening Date:</label>
+    <input type="date" id="opening_date" name="opening_date" value="" required><br><br>
+    
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
